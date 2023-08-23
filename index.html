@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fake API Simulation</title>
+</head>
+<body>
+  <h1>Fake API Simulation</h1>
+  <p>Usage: https://<seu-username>.github.io/<seu-repositorio>/?preco=1</p>
+  <div id="output"></div>
+
+  <script>
+    // Parse query parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const precoParam = urlParams.get('preco');
+
+    // Simulated products data
+    const products = [
+      { name: 'Produto 1', preco: 1 },
+      { name: 'Produto 2', preco: 2 },
+      { name: 'Produto 3', preco: 3 },
+      // ... add more products
+    ];
+
+    // Filter products based on price parameter
+    const filteredProducts = products.filter(product => {
+      return precoParam ? product.preco == precoParam : true;
+    });
+
+    // Display filtered products
+    const outputDiv = document.getElementById('output');
+    if (filteredProducts.length > 0) {
+      outputDiv.innerHTML = '<h2>Filtered Products:</h2>';
+      filteredProducts.forEach(product => {
+        outputDiv.innerHTML += `<p>${product.name} - Preço: ${product.preco}</p>`;
+      });
+    } else {
+      outputDiv.innerHTML = '<p>No products found.</p>';
+    }
+  </script>
+</body>
+</html>
