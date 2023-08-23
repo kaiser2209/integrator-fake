@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fake API Simulation</title>
+  <title>Fake API</title>
 </head>
 <body>
-  <h1>Fake API Simulation</h1>
-  <p>Usage: https://<seu-username>.github.io/<seu-repositorio>/?preco=1</p>
+  <h1>Fake API</h1>
+  <p>Usage: https://<seu-username>.github.io/<seu-repositorio>/api/?preco=1</p>
   <pre id="output"></pre>
 
   <script>
@@ -28,12 +28,9 @@
       return precoParam ? product.preco == precoParam : false;
     });
 
-    // Prepare JSON response
-    const jsonResponse = JSON.stringify(filteredProduct, null, 2);
-
-    // Display JSON response
-    const outputPre = document.getElementById('output');
-    outputPre.textContent = jsonResponse;
+    // Respond with JSON
+    const response = JSON.stringify(filteredProduct, null, 2);
+    document.getElementById('output').textContent = response;
   </script>
 </body>
 </html>
