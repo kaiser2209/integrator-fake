@@ -8,7 +8,7 @@
 <body>
   <h1>Fake API Simulation</h1>
   <p>Usage: https://<seu-username>.github.io/<seu-repositorio>/?preco=1</p>
-  <div id="output"></div>
+  <pre id="output"></pre>
 
   <script>
     // Parse query parameter
@@ -28,16 +28,12 @@
       return precoParam ? product.preco == precoParam : true;
     });
 
-    // Display filtered products
-    const outputDiv = document.getElementById('output');
-    if (filteredProducts.length > 0) {
-      outputDiv.innerHTML = '<h2>Filtered Products:</h2>';
-      filteredProducts.forEach(product => {
-        outputDiv.innerHTML += `<p>${product.name} - Preço: ${product.preco}</p>`;
-      });
-    } else {
-      outputDiv.innerHTML = '<p>No products found.</p>';
-    }
+    // Prepare JSON response
+    const jsonResponse = JSON.stringify(filteredProducts, null, 2);
+
+    // Display JSON response
+    const outputPre = document.getElementById('output');
+    outputPre.textContent = jsonResponse;
   </script>
 </body>
 </html>
