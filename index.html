@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fake API</title>
     <script>
+      document.addEventListener('DOMContentLoaded', function() {
     // Parse query parameter
     const urlParams = new URLSearchParams(window.location.search);
     const precoParam = urlParams.get('preco');
@@ -25,6 +26,7 @@
     // Respond with JSON
     const response = JSON.stringify(filteredProduct, null, 2);
     document.getElementById('output').textContent = response;
+      }
   </script>
 </head>
 <body>
